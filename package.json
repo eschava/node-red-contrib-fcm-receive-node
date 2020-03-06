@@ -1,0 +1,37 @@
+{
+  "name" : "node-red-contrib-fcm-receive-node",
+  "version": "0.0.1",
+  "description": "Node-red message receiver from Firebase Cloud Messaging (FCM)",
+  "main": "fcm-receive.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eschava/node-red-contrib-fcm-receive-node.git"
+  },
+  "keywords": [
+    "node",
+    "node-red",
+    "android",
+    "ios",
+    "fcm",
+    "fcm-receive",
+    "firebase",
+    "cloud",
+    "messaging",
+    "push",
+    "notification"
+  ],
+  "node-red": {
+    "nodes": {
+      "fcm-receive": "fcm-receive.js"
+    }
+  },
+  "author": "eschava",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eschava/node-red-contrib-fcm-receive-node/issues"
+  },
+  "homepage": "https://github.com/eschava/node-red-contrib-fcm-receive-node#readme",
+  "dependencies": {
+    "push-receiver": "^2.1.0"
+  }
+}
