@@ -1,5 +1,6 @@
 const { register, listen } = require('push-receiver');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = function(RED) {
     function FcmReceiveNode(config) {
@@ -8,24 +9,28 @@ module.exports = function(RED) {
         var node = this;
 
 		(async () => {
+		    var dir = path.join(RED.settings.userDir, 'fcm-receive');
+		    var credFile = path.join(dir, 'fcm.cred');
+		    var persistentIdsFile = path.join(dir, 'persistent.ids');
+
 			try {
-				fs.mkdirSync('fcm-receive');
+				fs.mkdirSync(dir);
 			} catch (e) {}
-			
+
 			var credentials;
 			try {
-				credentials = JSON.parse(fs.readFileSync('fcm-receive/fcm.cred'));
+				credentials = JSON.parse(fs.readFileSync(credFile));
 			} catch(e) {
 				credentials = await register(serverKey);
-				fs.writeFileSync('fcm-receive/fcm.cred', JSON.stringify(credentials));
+				fs.writeFileSync(credFile, JSON.stringify(credentials));
 			}
 			
 			node.log('fcm-receive token: ' + credentials.fcm.token);
 			
 			var persistentIds = [];
 			try {
-				persistentIds = fs.readFileSync('fcm-receive/persistent.ids').toString().split("\n");
-				fs.unlinkSync('fcm-receive/persistent.ids');
+				persistentIds = fs.readFileSync(persistentIdsFile).toString().split("\n");
+				fs.unlinkSync(persistentIdsFile);
 			} catch(e) {}
 			credentials.persistentIds = persistentIds;
 			listen(credentials, onNotification);
@@ -34,7 +39,7 @@ module.exports = function(RED) {
 			function onNotification({ notification, persistentId }) {
 			  var msg = {payload: notification, messageId: persistentId};
 			  node.send(msg);
-			  fs.appendFileSync('fcm-receive/persistent.ids', persistentId + "\n");
+			  fs.appendFileSync(persistentIdsFile, persistentId + "\n");
 			}
 		})();
     }

@@ -1,6 +1,6 @@
 {
   "name" : "node-red-contrib-fcm-receive-node",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node-red message receiver from Firebase Cloud Messaging (FCM)",
   "main": "fcm-receive.js",
   "repository": {
