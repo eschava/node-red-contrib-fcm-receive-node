@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    RED.nodes.registerType('fcm-connection',{
+        category: 'config',
+        defaults: {
+            name: {value:"", required:true},
+            serverkey: {value:"", required:true},
+            //token: {value:""},
+        },
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="fcm-connection">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-serverkey"><i class="icon-bookmark"></i> Server key</label>
+        <textarea rows="4" cols="60" id="node-config-input-serverkey" placeholder="" style="width:70%;"></textarea>
+    </div>
+<!--    <div class="form-row">-->
+<!--        <label for="node-config-input-token"><i class="icon-bookmark"></i> Token</label>-->
+<!--        <textarea rows="4" cols="60" id="node-config-input-token" placeholder="" style="width:70%;" readonly="readonly"></textarea>-->
+<!--    </div>-->
+</script>

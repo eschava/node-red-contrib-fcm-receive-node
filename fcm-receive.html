@@ -1,11 +1,17 @@
 <script type="text/x-red" data-help-name="fcm-receive">
 	<p>Firebase Cloud Messaging Receive (fcm-receive) Node</p>
-	<p color="red">Testing only! Use with cation</p>
 	<p>A simple receiver of Firebase Cloud Messaging (FCM) messages, powered by <a href='https://github.com/MatthieuLemoine/push-receiver'>push-receiver</a> NodeJs library.</p>
-	<p>It uses the environment variable <code>FCM_SERVER_KEY</code> for the <i>server key</i> configuration</p>
 </script>
 
-<script type="text/x-red" data-template-name="fcm-receive">
+<script type="text/html" data-template-name="fcm-receive">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="icon-bookmark"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
 </script>
 
 <script type="text/javascript">
@@ -15,7 +21,8 @@
     icon: 'firebase.png',
     align: 'right',
     defaults: {
-      name: {value: ''}
+      name: {value: ''},
+      connection: {value:"", type:"fcm-connection"},
     },
     category: 'output',
     inputs: 0,

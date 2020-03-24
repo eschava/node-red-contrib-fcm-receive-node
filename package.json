@@ -22,7 +22,8 @@
   ],
   "node-red": {
     "nodes": {
-      "fcm-receive": "fcm-receive.js"
+      "fcm-receive": "fcm-receive.js",
+      "fcm-connection": "fcm-connection.js"
     }
   },
   "author": "eschava",
