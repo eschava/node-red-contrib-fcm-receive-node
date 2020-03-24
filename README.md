@@ -4,7 +4,6 @@ A simple receiver of Firebase Cloud Messaging (FCM) messages, powered by [push-r
 
 It will send message every time when message is received from FCM service
 
-It uses the environment variable `FCM_SERVER_KEY` for the _server key_ configuration.
 Client token is printed to the node-red console on the startup
 
 
