@@ -28,7 +28,7 @@ module.exports = function(RED) {
                 fs.writeFileSync(credFile, JSON.stringify(credentials));
             }
 
-//            node.token = credentials.fcm.token;
+            node.token = credentials.fcm.token;
             node.log('token: ' + credentials.fcm.token);
 
             credentials.persistentIds = [];
@@ -51,4 +51,12 @@ module.exports = function(RED) {
 		})();
     }
     RED.nodes.registerType("fcm-connection", FcmConnection);
+
+    RED.httpAdmin.get("/fcm_token/:id", RED.auth.needsPermission('fcm_token.read'), function(req, res) {
+        var connectionNode = RED.nodes.getNode(req.params.id);
+        if (connectionNode != null)
+            res.end(connectionNode.token);
+        else
+            res.end("Connection is not registered");
+    });
 }

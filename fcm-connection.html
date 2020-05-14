@@ -8,6 +8,11 @@
         },
         label: function() {
             return this.name;
+        },
+        oneditprepare: function() {
+            $.get('fcm_token/' + this.id, function(data) {
+                $("#input-token").val(data);
+            });
         }
     });
 </script>
@@ -21,8 +26,8 @@
         <label for="node-config-input-serverkey"><i class="icon-bookmark"></i> Server key</label>
         <textarea rows="4" cols="60" id="node-config-input-serverkey" placeholder="" style="width:70%;"></textarea>
     </div>
-<!--    <div class="form-row">-->
-<!--        <label for="node-config-input-token"><i class="icon-bookmark"></i> Token</label>-->
-<!--        <textarea rows="4" cols="60" id="node-config-input-token" placeholder="" style="width:70%;" readonly="readonly"></textarea>-->
-<!--    </div>-->
+    <div class="form-row">
+        <label for="input-token"><i class="icon-bookmark"></i> Token</label>
+        <textarea rows="4" cols="60" id="input-token" placeholder="" style="width:70%;" readonly="readonly"></textarea>
+    </div>
 </script>
